@@ -9,9 +9,9 @@ const production = !process.env.ROLLUP_WATCH;
 export default {
   input: 'src/popup/main.js',
   output: {
-    sourcemap: true,
+    sourcemap: !production,
     format: 'iife',
-    name: 'app',
+    name: 'popup',
     file: 'popup/bundle.js'
   },
   plugins: [
@@ -24,12 +24,18 @@ export default {
     resolve({
       browser: true,
       dedupe: ['svelte'],
-      preferBuiltins: false
+      exportConditions: ['svelte']
     }),
     commonjs(),
     production && terser()
   ],
   watch: {
     clearScreen: false
+  },
+  external: [],
+  onwarn: (warning, warn) => {
+    if (warning.code === 'CIRCULAR_DEPENDENCY') return;
+    if (warning.code === 'THIS_IS_UNDEFINED') return;
+    warn(warning);
   }
 }; 

@@ -6,7 +6,15 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "build:prod": "NODE_ENV=production rollup -c",
+    "clean": "rm -rf popup/bundle.* dist/",
+    "watch": "npm run dev",
+    "generate-icons": "node scripts/generate-icons.js",
+    "package": "npm run build:prod && npm run generate-icons",
+    "lint": "echo 'Linting would run here'",
+    "test": "echo 'Tests would run here'",
+    "zip": "npm run package && zip -r localloom-extension.zip . -x node_modules/\\* .git/\\* *.zip package-lock.json"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.0",
@@ -18,6 +26,26 @@
     "svelte": "^4.2.0"
   },
   "dependencies": {
-    "@mlc-ai/web-llm": "^0.2.46"
-  }
+    "@mlc-ai/web-llm": "^0.2.46",
+    "idb": "^8.0.0"
+  },
+  "keywords": [
+    "ai",
+    "llm",
+    "text-processing",
+    "chrome-extension",
+    "webllm",
+    "local-ai",
+    "browser-extension"
+  ],
+  "author": "LocalLoom Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/localloom.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/localloom/issues"
+  },
+  "homepage": "https://github.com/yourusername/localloom#readme"
 } 

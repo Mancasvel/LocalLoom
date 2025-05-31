@@ -1,0 +1,30 @@
+{
+  "model_type": "tiny-llm",
+  "model_name": "TinyLlama-1.1B-Chat-v1.0-q4f16_1-MLC",
+  "model_id": "TinyLlama-1.1B-Chat-v1.0-q4f16_1-MLC",
+  "model_lib": "tiny_llm",
+  "context_window_size": 2048,
+  "prefill_chunk_size": 1024,
+  "temperature": 0.7,
+  "top_p": 0.9,
+  "repetition_penalty": 1.1,
+  "max_tokens": 512,
+  "tokenizer_files": ["tokenizer.json"],
+  "weight_files": ["params_shard_0.bin", "params_shard_1.bin"],
+  "model_config": {
+    "vocab_size": 32000,
+    "hidden_size": 2048,
+    "intermediate_size": 5632,
+    "num_hidden_layers": 22,
+    "num_attention_heads": 32,
+    "num_key_value_heads": 4,
+    "hidden_act": "silu",
+    "max_position_embeddings": 2048,
+    "initializer_range": 0.02,
+    "rms_norm_eps": 1e-05,
+    "use_cache": true,
+    "rope_theta": 10000.0,
+    "rope_scaling": null,
+    "attention_bias": false
+  }
+} 
