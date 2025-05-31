@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LocalLoom Icon Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        canvas { border: 1px solid #ccc; margin: 10px; }
+        .icon-set { margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>🧠 LocalLoom Icon Generator</h1>
+    <p>Este archivo genera iconos placeholder para LocalLoom. Abre en el navegador y haz click derecho en cada icono para "Guardar imagen como..."</p>
+    
+    <div class="icon-set">
+        <h3>Iconos Generados:</h3>
+        <canvas id="icon16" width="16" height="16"></canvas> 16x16px
+        <br>
+        <canvas id="icon32" width="32" height="32"></canvas> 32x32px
+        <br>
+        <canvas id="icon48" width="48" height="48"></canvas> 48x48px
+        <br>
+        <canvas id="icon128" width="128" height="128"></canvas> 128x128px
+    </div>
+
+    <div>
+        <h3>Instrucciones:</h3>
+        <ol>
+            <li>Abre este archivo en Chrome</li>
+            <li>Click derecho en cada icono → "Guardar imagen como..."</li>
+            <li>Guardar en la carpeta <code>icons/</code> con nombres: icon16.png, icon32.png, etc.</li>
+            <li>Restaurar el manifest.json con los iconos</li>
+        </ol>
+    </div>
+
+    <script>
+        function createIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Fondo azul
+            ctx.fillStyle = '#3b82f6';
+            ctx.fillRect(0, 0, size, size);
+            
+            // Borde redondeado (simulado)
+            ctx.fillStyle = '#2563eb';
+            ctx.fillRect(0, 0, size, 2);
+            ctx.fillRect(0, size-2, size, 2);
+            ctx.fillRect(0, 0, 2, size);
+            ctx.fillRect(size-2, 0, 2, size);
+            
+            // Texto "LL"
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${Math.floor(size * 0.4)}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('LL', size/2, size/2);
+            
+            // Convertir a downloadable
+            canvas.addEventListener('contextmenu', function(e) {
+                // Permitir click derecho para guardar
+            });
+        }
+
+        // Generar todos los iconos
+        createIcon('icon16', 16);
+        createIcon('icon32', 32);
+        createIcon('icon48', 48);
+        createIcon('icon128', 128);
+        
+        console.log('Iconos generados. Click derecho en cada uno para guardar.');
+    </script>
+</body>
+</html> 
